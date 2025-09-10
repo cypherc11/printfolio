@@ -17,8 +17,8 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({
   steps
 }) => {
   return (
-    <div className="mb-8">
-      <div className="flex items-center justify-between">
+  <div className="mb-8 px-2">
+  <div className="flex flex-col sm:flex-row items-center justify-between">
         {steps.map((step, index) => (
           <div key={step.id} className="flex items-center">
             <div className="flex flex-col items-center">

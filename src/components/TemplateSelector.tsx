@@ -81,24 +81,24 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+  <div className="max-w-6xl mx-auto px-2 sm:px-4 md:px-8 py-4">
+  <div className="text-center mb-8 px-2">
+  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
           Choose Your Portfolio Template
         </h2>
-        <p className="text-lg text-gray-600">
+  <p className="text-base sm:text-lg text-gray-600">
           Select a template that matches your style and profession. You can customize colors and layout later.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8 mb-8">
         {templates.map((template, index) => (
           <motion.div
             key={template.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className={`relative border-2 rounded-xl p-6 cursor-pointer transition-all duration-300 ${
+            className={`relative border-2 rounded-xl p-4 sm:p-6 cursor-pointer transition-all duration-300 ${
               selectedTemplate?.id === template.id
                 ? 'border-blue-500 bg-blue-50 shadow-lg'
                 : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-md'
@@ -112,16 +112,16 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({
             )}
 
             {/* Template Preview */}
-            <div className="relative mb-4 bg-gray-100 rounded-lg overflow-hidden h-48">
-              <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative mb-4 bg-gray-100 rounded-lg overflow-hidden h-32 sm:h-48">
+              <div className="absolute inset-0 flex items-center justify-center px-2">
                 <div className="text-center">
                   <div
-                    className="w-16 h-16 rounded-full mx-auto mb-3"
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-3"
                     style={{ backgroundColor: template.colors.primary }}
                   />
                   <div className="space-y-2">
-                    <div className="h-3 bg-gray-300 rounded w-24 mx-auto" />
-                    <div className="h-2 bg-gray-200 rounded w-16 mx-auto" />
+                    <div className="h-2 sm:h-3 bg-gray-300 rounded w-16 sm:w-24 mx-auto" />
+                    <div className="h-1 sm:h-2 bg-gray-200 rounded w-10 sm:w-16 mx-auto" />
                   </div>
                 </div>
               </div>
@@ -130,18 +130,18 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({
               </div>
             </div>
 
-            <div className="mb-4">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <div className="mb-4 px-2">
+              <h3 className="text-base sm:text-xl font-semibold text-gray-900 mb-2">
                 {template.name}
               </h3>
-              <p className="text-gray-600 text-sm mb-3">
+              <p className="text-gray-600 text-xs sm:text-sm mb-3">
                 {template.description}
               </p>
-              <div className="flex items-center space-x-2">
-                <span className="text-xs text-gray-500 uppercase font-medium">
+              <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
+                <span className="text-xs sm:text-xs text-gray-500 uppercase font-medium">
                   {template.category}
                 </span>
-                <div className="flex space-x-1">
+                <div className="flex space-x-1 mt-1 sm:mt-0">
                   {Object.values(template.colors).slice(0, 3).map((color, colorIndex) => (
                     <div
                       key={colorIndex}
@@ -154,16 +154,16 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({
             </div>
 
             {/* Template Features */}
-            <div className="space-y-1">
-              <div className="flex items-center text-xs text-gray-500">
+            <div className="space-y-1 px-2">
+              <div className="flex items-center text-xs sm:text-xs text-gray-500">
                 <Check className="h-3 w-3 text-green-500 mr-2" />
                 Responsive Design
               </div>
-              <div className="flex items-center text-xs text-gray-500">
+              <div className="flex items-center text-xs sm:text-xs text-gray-500">
                 <Check className="h-3 w-3 text-green-500 mr-2" />
                 SEO Optimized
               </div>
-              <div className="flex items-center text-xs text-gray-500">
+              <div className="flex items-center text-xs sm:text-xs text-gray-500">
                 <Check className="h-3 w-3 text-green-500 mr-2" />
                 Contact Form
               </div>
@@ -176,22 +176,22 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-8"
+          className="text-center mb-8 px-2"
         >
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 inline-block">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 inline-block">
             <h4 className="font-semibold text-gray-900 mb-2">
               Selected: {selectedTemplate.name}
             </h4>
             <p className="text-gray-600 text-sm mb-4">
               {selectedTemplate.description}
             </p>
-            <div className="flex items-center justify-center space-x-3">
+            <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-3">
               <span className="text-sm text-gray-500">Colors:</span>
               <div className="flex space-x-2">
                 {Object.entries(selectedTemplate.colors).map(([name, color]) => (
-                  <div key={name} className="text-center">
+                  <div key={name} className="text-center mx-1">
                     <div
-                      className="w-8 h-8 rounded-lg border border-gray-300 mb-1"
+                      className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg border border-gray-300 mb-1"
                       style={{ backgroundColor: color }}
                     />
                     <span className="text-xs text-gray-400 capitalize">{name}</span>
@@ -203,17 +203,17 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({
         </motion.div>
       )}
 
-      <div className="flex justify-between">
+  <div className="flex flex-col sm:flex-row justify-between px-2 space-y-2 sm:space-y-0">
         <button
           onClick={onBack}
-          className="bg-gray-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-600 transition-colors"
+          className="bg-gray-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium hover:bg-gray-600 transition-colors"
         >
           Back
         </button>
         <button
           onClick={onNext}
           disabled={!selectedTemplate}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {selectedTemplate ? 'Generate Portfolio' : 'Select a Template'}
         </button>

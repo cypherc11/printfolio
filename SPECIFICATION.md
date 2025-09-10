@@ -178,7 +178,7 @@ const aiPersonalization = {
 5. **SSL** : Certificat HTTPS automatique
 
 #### URL Unique
-```javascript
+```javascript 
 const generateUniqueUrl = (userData) => {
   const slug = userData.name
     .toLowerCase()

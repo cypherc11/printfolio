@@ -29,6 +29,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
     setEditingSection(null);
   };
 
+  //add experience
   const addExperience = () => {
     const newExperience = {
       id: `exp-${Date.now()}`,
@@ -45,6 +46,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
     });
   };
 
+  //remove experience
   const removeExperience = (id: string) => {
     setEditData({
       ...editData,
@@ -52,6 +54,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
     });
   };
 
+  //add skills
   const addSkill = () => {
     const newSkill = {
       id: `skill-${Date.now()}`,
@@ -65,6 +68,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
     });
   };
 
+  //remove skills
   const removeSkill = (id: string) => {
     setEditData({
       ...editData,
@@ -73,25 +77,28 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+  <div className="max-w-4xl mx-auto px-2 sm:px-4 md:px-8 py-4">
+  <div className="text-center mb-8 px-2">
+  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
           Review & Edit Your Information
         </h2>
-        <p className="text-lg text-gray-600">
+  <p className="text-base sm:text-lg text-gray-600">
           Our AI has extracted the following information. You can edit or add any details.
         </p>
       </div>
 
-      <div className="space-y-8">
+  <div className="space-y-6 sm:space-y-8">
         {/* Personal Information */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-xl shadow-sm border border-gray-200 p-6"
+          className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6"
         >
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-semibold text-gray-900">Personal Information</h3>
+          <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-2 sm:gap-0">
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Personal Information</h3>
+              <p className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">click to edit and Add your Github and Linkedin profile</p>
+            </div>
             <button
               onClick={() => setEditingSection(editingSection === 'personal' ? null : 'personal')}
               className="text-blue-600 hover:text-blue-700 transition-colors"
@@ -101,10 +108,10 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
           </div>
 
           {editingSection === 'personal' ? (
-            <div className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Name</label>
                   <input
                     type="text"
                     value={editData.personalInfo.name}
@@ -112,11 +119,11 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                       ...editData,
                       personalInfo: { ...editData.personalInfo, name: e.target.value }
                     })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Email</label>
                   <input
                     type="email"
                     value={editData.personalInfo.email}
@@ -124,11 +131,11 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                       ...editData,
                       personalInfo: { ...editData.personalInfo, email: e.target.value }
                     })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Phone</label>
                   <input
                     type="tel"
                     value={editData.personalInfo.phone}
@@ -136,11 +143,11 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                       ...editData,
                       personalInfo: { ...editData.personalInfo, phone: e.target.value }
                     })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Location</label>
                   <input
                     type="text"
                     value={editData.personalInfo.location}
@@ -148,11 +155,11 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                       ...editData,
                       personalInfo: { ...editData.personalInfo, location: e.target.value }
                     })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">LinkedIn</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">LinkedIn</label>
                   <input
                     type="url"
                     value={editData.personalInfo.linkedin || ''}
@@ -160,11 +167,11 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                       ...editData,
                       personalInfo: { ...editData.personalInfo, linkedin: e.target.value }
                     })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">GitHub</label>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">GitHub</label>
                   <input
                     type="url"
                     value={editData.personalInfo.github || ''}
@@ -172,12 +179,24 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                       ...editData,
                       personalInfo: { ...editData.personalInfo, github: e.target.value }
                     })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">website</label>
+                  <input
+                    type="url"
+                    value={editData.personalInfo.website || ''}
+                    onChange={(e) => setEditData({
+                      ...editData,
+                      personalInfo: { ...editData.personalInfo, website: e.target.value }
+                    })}
+                    className="w-full px-2 sm:px-6 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Bio</label>
                 <textarea
                   value={editData.personalInfo.bio || ''}
                   onChange={(e) => setEditData({
@@ -185,48 +204,48 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                     personalInfo: { ...editData.personalInfo, bio: e.target.value }
                   })}
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                   placeholder="A brief description about yourself..."
                 />
               </div>
-              <div className="flex space-x-3">
+              <div className="flex flex-col sm:flex-row gap-2 sm:space-x-3 mt-2">
                 <button
                   onClick={handleSave}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center space-x-2"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center space-x-2 text-xs sm:text-sm"
                 >
                   <Save className="h-4 w-4" />
                   <span>Save</span>
                 </button>
                 <button
                   onClick={handleCancel}
-                  className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors"
+                  className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors text-xs sm:text-sm"
                 >
                   Cancel
                 </button>
               </div>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               <div>
-                <span className="text-sm text-gray-500">Name:</span>
-                <p className="font-medium">{cvData.personalInfo.name}</p>
+                <span className="text-xs sm:text-sm text-gray-500">Name:</span>
+                <p className="font-medium text-xs sm:text-sm">{cvData.personalInfo.name}</p>
               </div>
               <div>
-                <span className="text-sm text-gray-500">Email:</span>
-                <p className="font-medium">{cvData.personalInfo.email}</p>
+                <span className="text-xs sm:text-sm text-gray-500">Email:</span>
+                <p className="font-medium text-xs sm:text-sm">{cvData.personalInfo.email}</p>
               </div>
               <div>
-                <span className="text-sm text-gray-500">Phone:</span>
-                <p className="font-medium">{cvData.personalInfo.phone}</p>
+                <span className="text-xs sm:text-sm text-gray-500">Phone:</span>
+                <p className="font-medium text-xs sm:text-sm">{cvData.personalInfo.phone}</p>
               </div>
               <div>
-                <span className="text-sm text-gray-500">Location:</span>
-                <p className="font-medium">{cvData.personalInfo.location}</p>
+                <span className="text-xs sm:text-sm text-gray-500">Location:</span>
+                <p className="font-medium text-xs sm:text-sm">{cvData.personalInfo.location}</p>
               </div>
               {cvData.personalInfo.bio && (
                 <div className="md:col-span-2">
-                  <span className="text-sm text-gray-500">Bio:</span>
-                  <p className="font-medium">{cvData.personalInfo.bio}</p>
+                  <span className="text-xs sm:text-sm text-gray-500">Bio:</span>
+                  <p className="font-medium text-xs sm:text-sm">{cvData.personalInfo.bio}</p>
                 </div>
               )}
             </div>
@@ -238,11 +257,11 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white rounded-xl shadow-sm border border-gray-200 p-6"
+          className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6"
         >
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-semibold text-gray-900">Experience</h3>
-            <div className="flex space-x-2">
+          <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-2 sm:gap-0">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Experience</h3>
+            <div className="flex flex-row gap-2 sm:space-x-2">
               {editingSection === 'experience' && (
                 <button
                   onClick={addExperience}
@@ -260,13 +279,13 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {(editingSection === 'experience' ? editData : cvData).experience.map((exp, index) => (
-              <div key={exp.id} className="border border-gray-200 rounded-lg p-4">
+              <div key={exp.id} className="border border-gray-200 rounded-lg p-3 sm:p-4">
                 {editingSection === 'experience' ? (
                   <div className="space-y-3">
                     <div className="flex justify-between items-start">
-                      <div className="grid md:grid-cols-2 gap-3 flex-1">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 flex-1">
                         <input
                           type="text"
                           placeholder="Company"
@@ -276,7 +295,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                             updatedExp[index] = { ...exp, company: e.target.value };
                             setEditData({ ...editData, experience: updatedExp });
                           }}
-                          className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                         />
                         <input
                           type="text"
@@ -287,7 +306,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                             updatedExp[index] = { ...exp, position: e.target.value };
                             setEditData({ ...editData, experience: updatedExp });
                           }}
-                          className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                         />
                         <input
                           type="month"
@@ -298,7 +317,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                             updatedExp[index] = { ...exp, startDate: e.target.value };
                             setEditData({ ...editData, experience: updatedExp });
                           }}
-                          className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          className="px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                         />
                         <input
                           type="month"
@@ -310,7 +329,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                             updatedExp[index] = { ...exp, endDate: e.target.value };
                             setEditData({ ...editData, experience: updatedExp });
                           }}
-                          className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100"
+                          className="px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 text-xs sm:text-sm"
                         />
                       </div>
                       <button
@@ -345,7 +364,7 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
                         setEditData({ ...editData, experience: updatedExp });
                       }}
                       rows={3}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-2 sm:px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-xs sm:text-sm"
                     />
                   </div>
                 ) : (
@@ -367,17 +386,17 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
           </div>
 
           {editingSection === 'experience' && (
-            <div className="flex space-x-3 mt-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:space-x-3 mt-2 sm:mt-4">
               <button
                 onClick={handleSave}
-                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center space-x-2"
+                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center space-x-2 text-xs sm:text-sm"
               >
                 <Save className="h-4 w-4" />
                 <span>Save</span>
               </button>
               <button
                 onClick={handleCancel}
-                className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors"
+                className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors text-xs sm:text-sm"
               >
                 Cancel
               </button>
@@ -479,14 +498,14 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
               </div>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-              {cvData.skills.map((skill) => (
-                <div key={skill.id} className="bg-gray-50 rounded-lg p-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+              {Array.isArray(cvData.skills) && cvData.skills.map((skill) => (
+                <div key={skill.id} className="bg-gray-50 rounded-lg p-2 sm:p-3">
                   <div className="flex justify-between items-center mb-1">
-                    <span className="font-medium text-gray-900">{skill.name}</span>
+                    <span className="font-medium text-gray-900 text-xs sm:text-sm">{skill.name}</span>
                     <span className="text-xs text-gray-500 uppercase">{skill.category}</span>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center gap-1 sm:space-x-2">
                     <div className="flex-1 bg-gray-200 rounded-full h-2">
                       <div
                         className="bg-blue-600 h-2 rounded-full transition-all duration-300"
@@ -500,18 +519,26 @@ export const DataPreview: React.FC<DataPreviewProps> = ({
             </div>
           )}
         </motion.div>
-      </div>
 
-      <div className="flex justify-between mt-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6"
+        >
+        </motion.div>
+      </div>     
+
+      <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0 mt-8 px-2">
         <button
           onClick={onBack}
-          className="bg-gray-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-600 transition-colors"
+          className="bg-gray-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium hover:bg-gray-600 transition-colors text-xs sm:text-sm"
         >
           Back
         </button>
         <button
           onClick={onNext}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300"
+          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300 text-xs sm:text-sm"
         >
           Choose Template
         </button>
